@@ -1,0 +1,49 @@
+.my-container {
+    border-bottom: 1px solid gray;
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(100,200,255,1) 0%, rgba(166,180,253,1) 90.1% );
+    margin-bottom: 20px;
+}
+
+.main-title {
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type=text] {
+    width: 35%;
+    padding: 12px 20px;
+    margin: 8px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.add-button {
+    background-color: #0b5a15;
+}
+
+.add-button:hover {
+    background-color: #118c21;
+}
+
+.custom-button {
+    color: white;
+    padding: 8px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-button{
+    background-color: #9d1612;
+}
+
+.remove-button:hover {
+    background-color: #e6312c;
+}

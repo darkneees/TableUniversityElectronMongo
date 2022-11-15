@@ -1,0 +1,14 @@
+.my-container {
+    border-bottom: 1px solid gray;
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(100,200,255,1) 0%, rgba(166,180,253,1) 90.1% );
+    margin-bottom: 20px;
+}
+
+.main-title {
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,34 @@
+.mainContainer {
+    vertical-align:middle;
+    margin-top: 100px;
+    padding: 50px 25px 100px;
+    margin-bottom: 100px;
+}
+
+.mainForm {
+
+    margin-top: 40px;
+}
+
+.submitBlock {
+    margin-top: 20px;
+}
+
+.submitButton {
+    width:200px;
+}
+
+.studyBlock {
+
+    margin-top:20px;
+
+}
+
+.linkStudy {
+    text-decoration: none;
+}
+
+.linkStudy:hover {
+    text-decoration: underline;
+    text-decoration-color: #696969;
+}

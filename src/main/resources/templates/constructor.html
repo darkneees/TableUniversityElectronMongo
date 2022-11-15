@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="header.html :: headerfiles"/>
+    <style th:href="@{/styles/constructor.css}"></style>
+    <script th:src="@{/js/bootstrapValidator.js}"></script>
+    <script th:src="@{/js/type_components.js}"></script>
+    <title>Электрические компоненты</title>
+</head>
+<body>
+
+    <h1>Созданение типа компонента</h1>
+    <span tyle="display: inline-block" class="main-title my-container">
+        <div style="display: inline-block" class="dropdown">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Выберите тип элемента</option>
+                <option value="1">Текстовое поле</option>
+                <option value="2">Селектор</option>
+                <option value="3">Дата</option>
+                <option value="4">Числа</option>
+            </select>
+        </div>
+        <fieldset style="display: inline-block">
+            <legend>Обязателен ли ввод?</legend>
+            <div>
+              <input type="checkbox" id="required" name="required" checked>
+              <label for="required">Обязательно</label>
+            </div>
+            <div>
+              <input type="checkbox" id="nonrequired" name="nonrequired">
+              <label for="nonrequired">Необязательно</label>
+            </div>
+        </fieldset>
+        <div style="display: inline-block" id="name_type_div" class="form-group">
+            <label>Имя типа компонента</label>
+                <div class="inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input required id="name_type" name="name_type" placeholder="Введите имя типа компонента..." class="form-control"  type="text">
+                </div>
+            </div>
+        </div>
+        <div style="display: inline-block" id="key_type_div" class="form-group">
+            <label>Ключ типа компонента</label>
+            <div class="inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input required id="key_type" name="key_type" placeholder="Введите ключ типа компонента..." class="form-control"  type="text">
+                </div>
+            </div>
+        </div>
+        <button style="display: inline-block" class="btn custom-button add-button">Добавить элемент на страницу</button>
+        </span>
+
+
+    <div id="elements">
+
+    </div>
+
+</body>
+</html>

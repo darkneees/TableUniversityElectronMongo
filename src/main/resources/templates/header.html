@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles">
+    <link media="all" type="text/css" th:href="@{/styles/bootstrap.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/jquery-3.6.0.js}"></script>
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+<body>
+
+<header th:fragment="header">
+        <span class="main-title my-container">
+        <div class="dropdown">
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">Все компоненты</option>
+              <option value="2">Коденсатор</option>
+              <option value="3">Резистор</option>
+            </select>
+        </div>
+        <form>
+            <input type="text" id="item-search" name="item=search" placeholder="Введите название компонента">
+        </form>
+        <div class="dropdown">
+            <a th:href="@{/type_components}" class="functiondropbtn btn custom-button add-button">Типы компонента</a>
+            <button onclick="drop_links()" class="functiondropbtn btn custom-button add-button">Добавить компонент</button>
+        </div>
+        </span>
+</header>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="header.html :: headerfiles"/>
+    <link media="all" type="text/css" th:href="@{/styles/type_component.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/type_components.js}"></script>
+    <title>Создание типа компонента</title>
+</head>
+<body>
+
+<span class="main-title my-container">
+        <form style="display: inline;">
+            <input type="text" id="key" name="key" placeholder="Введите ключ типа компонента">
+        </form>
+        <form style="display: inline;">
+            <input type="text" id="value" name="value" placeholder="Введите название типа компонента">
+        </form>
+            <button id="add_typeComponent" class="btn custom-button add-button">Добавить тип компонента</button>
+        </span>
+
+
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Удаление</th>
+                <th scope="col">Ключ</th>
+                <th scope="col">Значение</th>
+            </tr>
+            </thead>
+            <tbody id="table-components">
+            <tr th:each="elem: ${type_components_list}" >
+                <th>
+                    <form th:method="delete" th:action="@{'/type_components/delete/' + ${elem.key}}">
+                        <button type="submit" class="btn-sm custom-button remove-button">Удалить</button>
+                    </form>
+                </th>
+                <th th:text="${elem.key}"/>
+                <th th:text="${elem.value}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
