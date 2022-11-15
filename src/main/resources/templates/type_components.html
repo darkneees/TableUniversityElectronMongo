@@ -31,9 +31,8 @@
             <tbody id="table-components">
             <tr th:each="elem: ${type_components_list}" >
                 <th>
-                    <form th:method="delete" th:action="@{'/type_components/delete/' + ${elem.key}}">
-                        <button type="submit" class="btn-sm custom-button remove-button">Удалить</button>
-                    </form>
+                    <form th:action="@{'/type_components/delete/' + ${elem.key}}"></form>
+                    <button class="btn-sm custom-button remove-button">Удалить</button>
                 </th>
                 <th th:text="${elem.key}"/>
                 <th th:text="${elem.value}"/>

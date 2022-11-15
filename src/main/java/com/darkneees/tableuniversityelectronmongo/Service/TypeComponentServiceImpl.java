@@ -29,4 +29,9 @@ public class TypeComponentServiceImpl implements TypeComponentService {
     public void deleteTypeComponent(String key) {
         typeComponentRepository.deleteById(key);
     }
+
+    @Override
+    public TypeComponent getTypeComponentByKey(String key) {
+        return typeComponentRepository.findById(key).get();
+    }
 }

@@ -12,8 +12,7 @@ import java.util.Set;
 @Document
 public class User implements UserDetails {
 
-    private @MongoId ObjectId id;
-    private String username;
+    private @MongoId String username;
     private String password;
     private Set<UserRole> userRoles;
 
@@ -50,14 +49,6 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
     }
 
     public void setUsername(String username) {

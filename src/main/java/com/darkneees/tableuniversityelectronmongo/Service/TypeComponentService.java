@@ -9,4 +9,5 @@ public interface TypeComponentService {
     TypeComponent addTypeComponent(TypeComponent typeComponent);
     List<TypeComponent> getAllTypeComponents();
     void deleteTypeComponent(String key);
+    TypeComponent getTypeComponentByKey(String key);
 }
