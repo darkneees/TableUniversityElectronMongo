@@ -14,7 +14,7 @@
 }
 
 input[type=text] {
-    width: 35%;
+    width: 30%;
     padding: 12px 20px;
     margin: 8px 20px;
     display: inline-block;
@@ -46,4 +46,12 @@ input[type=text] {
 
 .remove-button:hover {
     background-color: #e6312c;
+}
+
+.edit-button {
+    background-color: #2075f3;
+}
+
+.edit-button:hover {
+    background-color: #1563d5;
 }

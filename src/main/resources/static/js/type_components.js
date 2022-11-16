@@ -19,7 +19,6 @@ jQuery(document).ready(function ($) {
                 elem[0].parentElement.parentElement.remove();
             })
         });
-
     });
 
     $("#add_typeComponent").click(function (){
@@ -45,9 +44,16 @@ jQuery(document).ready(function ($) {
                     </th>
                     <th>${data.key}</th>
                     <th>${data.value}</th>
+                    <th>
+                    <a href="@{'/type_components/constructor/' + ${data.key}}" class="btn-sm custom-button edit-button">Редактировать конструктор</a>
+
+                    </th>
                     </tr>
                 `
                 table.append(htmlText);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("Заполните все поля");
             }
         });
     });

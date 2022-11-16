@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -17,8 +18,9 @@ public class IndexController {
         this.typeComponentService = typeComponentService;
     }
 
-    @GetMapping("/components")
-    public String getIndexPage(){
+    @GetMapping("/")
+    public String getIndexPage(Model model){
+        model.addAttribute("type_components", typeComponentService.getAllTypeComponents());
         return "index";
     }
 
@@ -31,6 +33,7 @@ public class IndexController {
     @PostMapping("/type_components")
     @ResponseBody
     public Map<String, Object> addTypeComponent(@RequestParam("key") String key, @RequestParam("value") String value) {
+        if(key.equals("") || value.equals("")) throw new RuntimeException("Empty fields");
         TypeComponent typeComponent = new TypeComponent(key, value);
         typeComponentService.addTypeComponent(typeComponent);
         return Map.of("result", "success", "key", key, "value", value);
@@ -40,6 +43,19 @@ public class IndexController {
     @ResponseBody
     public Map<String, String> deleteTypeComponent(@PathVariable("key") String key) {
         typeComponentService.deleteTypeComponent(key);
+        return Map.of("result", "success");
+    }
+
+    @GetMapping("/type_components/constructor/{key}")
+    public String getPageWithTypeConstructor (@PathVariable("key") String key) {
+        return "constructor";
+    }
+
+    @PostMapping("/type_components/constructor/{key}")
+    @ResponseBody
+    public Map<String, String> addTypeConstructorForComponent(@PathVariable("key") String key,
+                                                              @RequestParam(required = false, name="data") String data) {
+        System.out.println(data);
         return Map.of("result", "success");
     }
 }

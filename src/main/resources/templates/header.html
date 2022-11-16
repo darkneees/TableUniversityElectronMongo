@@ -8,22 +8,21 @@
 </head>
 <body>
 
-<header th:fragment="header">
+<header th:fragment="header(type_components)">
         <span class="main-title my-container">
+        <a style="text-decoration: none" th:href="@{/}" class="btn-sm custom-button add-button">Главная страница</a>
         <div class="dropdown">
             <select class="form-select" aria-label="Default select example">
-              <option selected>Open this select menu</option>
-              <option value="1">Все компоненты</option>
-              <option value="2">Коденсатор</option>
-              <option value="3">Резистор</option>
+                <option selected>Все компоненты</option>
+                <option th:each="elem: ${type_components}" th:value="${elem.key}" th:text="${elem.value}"/>
             </select>
         </div>
         <form>
             <input type="text" id="item-search" name="item=search" placeholder="Введите название компонента">
         </form>
         <div class="dropdown">
-            <a th:href="@{/type_components}" class="functiondropbtn btn custom-button add-button">Типы компонента</a>
-            <button onclick="drop_links()" class="functiondropbtn btn custom-button add-button">Добавить компонент</button>
+            <a style="text-decoration: none" th:href="@{/type_components}" class="btn-sm custom-button add-button">Типы компонента</a>
+            <button class="btn-sm custom-button add-button">Добавить компонент</button>
         </div>
         </span>
 </header>

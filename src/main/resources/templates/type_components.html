@@ -9,13 +9,14 @@
 <body>
 
 <span class="main-title my-container">
+        <a style="margin-left: 15px" th:href="@{/}" class="btn-sm custom-button add-button">Главная страница</a>
         <form style="display: inline;">
             <input type="text" id="key" name="key" placeholder="Введите ключ типа компонента">
         </form>
         <form style="display: inline;">
             <input type="text" id="value" name="value" placeholder="Введите название типа компонента">
         </form>
-            <button id="add_typeComponent" class="btn custom-button add-button">Добавить тип компонента</button>
+            <button id="add_typeComponent" class="btn-sm custom-button add-button">Добавить тип компонента</button>
         </span>
 
 
@@ -24,8 +25,9 @@
             <thead>
             <tr>
                 <th scope="col">Удаление</th>
-                <th scope="col">Ключ</th>
-                <th scope="col">Значение</th>
+                <th style="min-width: 150px;" scope="col">Ключ</th>
+                <th style="min-width: 150px;" scope="col">Значение</th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody id="table-components">
@@ -36,6 +38,9 @@
                 </th>
                 <th th:text="${elem.key}"/>
                 <th th:text="${elem.value}"/>
+                <th>
+                    <a th:href="@{'/type_components/constructor/' + ${elem.key}}" class="btn-sm custom-button edit-button">Редактировать конструктор</a>
+                </th>
             </tr>
             </tbody>
         </table>

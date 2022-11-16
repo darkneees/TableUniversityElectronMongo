@@ -1,3 +1,10 @@
+a.text:active, /* активная/посещенная ссылка */
+a.text:hover,  /* при наведении */
+a.text {
+    text-decoration: none;
+    color: #666;
+}
+
 .my-container {
     border-bottom: 1px solid gray;
     background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(100,200,255,1) 0%, rgba(166,180,253,1) 90.1% );
@@ -109,7 +116,7 @@ form {
 .dropdown {
     position: relative;
     display: inline-block;
-    margin-left: 20px;
+    margin-left: 5px;
 }
 
 /* Dropdown Content (Hidden by Default) */
