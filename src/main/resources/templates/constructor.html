@@ -3,7 +3,6 @@
 <head>
     <th:block th:insert="header.html :: headerfiles"/>
     <link media="all" type="text/css" th:href="@{/styles/constructor.css}" rel="stylesheet"/>
-    <script th:src="@{/js/constructor.js}"></script>
     <title>Электрические компоненты</title>
 </head>
 <body style="background-color: lightblue;">
@@ -47,9 +46,35 @@
             <th scope="col">Обязательно</th>
         </tr>
         </thead>
-        <tbody id="table-components"></tbody>
+        <tbody id="table-components">
+        <tr th:each="elem: ${template_field.getFields()}">
+            <th><button class="btn-sm custom-button remove-button">Удалить</button></th>
+            <th th:each="map: ${elem.keySet()}" th:text="${map}"></th>
+            <th:block th:each="field: ${elem.values()}">
+                <th th:text="${field.getValue()}"></th>
+                <th th:text="${field.isRequired()}"></th>
+            </th:block>
+        </tr>
+        </tbody>
     </table>
 </div>
+
+<script th:inline="javascript">
+
+    const type_key = window.location.href.substring(window.location.href.lastIndexOf("/") + 1);
+    let fields = {};
+    fields[type_key] = {};
+
+    let templateFields = [[${template_field}]];
+    templateFields['fields'].forEach(function (elem) {
+        let keys = Object.keys(elem);
+        fields[type_key][keys] = {
+            "value": elem[keys]['value'],
+            "required": elem[keys]['required']
+        };
+    });
+</script>
+<script th:src="@{/js/constructor.js}"></script>
 
 </body>
 </html>

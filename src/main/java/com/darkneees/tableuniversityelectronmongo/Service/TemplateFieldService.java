@@ -8,5 +8,6 @@ public interface TemplateFieldService {
 
     List<TemplateField> getAllTemplateFields();
     void addTemplateField(TemplateField templateField);
+    TemplateField getTemplateFieldByKey(String key);
 
 }

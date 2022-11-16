@@ -25,4 +25,9 @@ public class TemplateFieldServiceImpl implements TemplateFieldService {
         templateFieldRepository.save(templateField);
     }
 
+    @Override
+    public TemplateField getTemplateFieldByKey(String key) {
+        return templateFieldRepository.findById(key).orElse(new TemplateField());
+    }
+
 }

@@ -1,8 +1,10 @@
 package com.darkneees.tableuniversityelectronmongo.Controller;
 
+import com.darkneees.tableuniversityelectronmongo.Entity.TemplateField;
 import com.darkneees.tableuniversityelectronmongo.Entity.TypeComponent;
 import com.darkneees.tableuniversityelectronmongo.Service.MapperTemplateField;
 import com.darkneees.tableuniversityelectronmongo.Service.TemplateFieldService;
+import com.darkneees.tableuniversityelectronmongo.Service.TemplateFieldServiceImpl;
 import com.darkneees.tableuniversityelectronmongo.Service.TypeComponentServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.stereotype.Controller;
@@ -16,9 +18,9 @@ public class IndexController {
 
     private final TypeComponentServiceImpl typeComponentService;
     private final MapperTemplateField mapperTemplateField;
-    private final TemplateFieldService templateFieldService;
+    private final TemplateFieldServiceImpl templateFieldService;
 
-    public IndexController(TypeComponentServiceImpl typeComponentService, TemplateFieldService templateFieldService) {
+    public IndexController(TypeComponentServiceImpl typeComponentService, TemplateFieldServiceImpl templateFieldService) {
         this.typeComponentService = typeComponentService;
         this.templateFieldService = templateFieldService;
         this.mapperTemplateField = new MapperTemplateField();
@@ -53,7 +55,10 @@ public class IndexController {
     }
 
     @GetMapping("/type_components/constructor/{key}")
-    public String getPageWithTypeConstructor (@PathVariable("key") String key) {
+    public String getPageWithTypeConstructor (Model model, @PathVariable("key") String key) {
+        TemplateField templateField = templateFieldService.getTemplateFieldByKey(key);
+        System.out.println(templateField);
+        model.addAttribute("template_field", templateFieldService.getTemplateFieldByKey(key));
         return "constructor";
     }
 

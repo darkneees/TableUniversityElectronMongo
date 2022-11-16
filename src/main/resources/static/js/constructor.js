@@ -3,10 +3,6 @@ $(document).ready(function ($) {
     var token = $('#_csrf').attr('content');
     var header = $('#_csrf_header').attr('content');
 
-    const fields = {};
-    const type_key = window.location.href.substring(window.location.href.lastIndexOf("/") + 1);
-    fields[type_key] = {};
-
     $("#add-element").click(function (){
 
         let key_field = $("#key-field").val();
