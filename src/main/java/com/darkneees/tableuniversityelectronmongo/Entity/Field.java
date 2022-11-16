@@ -28,4 +28,12 @@ public class Field {
         this.required = required;
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "Field{" +
+                "required=" + required +
+                ", value=" + value +
+                '}';
+    }
 }

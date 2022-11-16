@@ -45,8 +45,7 @@ jQuery(document).ready(function ($) {
                     <th>${data.key}</th>
                     <th>${data.value}</th>
                     <th>
-                    <a href="@{'/type_components/constructor/' + ${data.key}}" class="btn-sm custom-button edit-button">Редактировать конструктор</a>
-
+                    <a href="/type_components/constructor/${data.key}" class="btn-sm custom-button edit-button">Редактировать конструктор</a>
                     </th>
                     </tr>
                 `

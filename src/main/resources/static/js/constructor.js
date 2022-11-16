@@ -4,6 +4,8 @@ $(document).ready(function ($) {
     var header = $('#_csrf_header').attr('content');
 
     const fields = {};
+    const type_key = window.location.href.substring(window.location.href.lastIndexOf("/") + 1);
+    fields[type_key] = {};
 
     $("#add-element").click(function (){
 
@@ -13,8 +15,8 @@ $(document).ready(function ($) {
 
         if(!fields.hasOwnProperty(key_field)) {
 
-            fields[key_field] = {
-                "name": name_field,
+            fields[type_key][key_field] = {
+                "value": name_field,
                 "required": required
             };
 
@@ -35,11 +37,12 @@ $(document).ready(function ($) {
 
     $("#table-components").on('click', '.remove-button', function (){
         $(this)[0].parentElement.parentElement.remove();
-        delete fields[$(this)[0].parentElement.nextElementSibling.textContent];
+        delete fields[type_key][$(this)[0].parentElement.nextElementSibling.textContent];
     });
 
     $("#update_form").click(function (){
 
+        console.log(fields);
         $.ajax({
             url: window.location.href,
             method: 'post',

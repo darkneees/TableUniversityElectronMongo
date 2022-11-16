@@ -1,21 +1,27 @@
 package com.darkneees.tableuniversityelectronmongo.Controller;
 
 import com.darkneees.tableuniversityelectronmongo.Entity.TypeComponent;
+import com.darkneees.tableuniversityelectronmongo.Service.MapperTemplateField;
+import com.darkneees.tableuniversityelectronmongo.Service.TemplateFieldService;
 import com.darkneees.tableuniversityelectronmongo.Service.TypeComponentServiceImpl;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @Controller
 public class IndexController {
 
     private final TypeComponentServiceImpl typeComponentService;
+    private final MapperTemplateField mapperTemplateField;
+    private final TemplateFieldService templateFieldService;
 
-    public IndexController(TypeComponentServiceImpl typeComponentService) {
+    public IndexController(TypeComponentServiceImpl typeComponentService, TemplateFieldService templateFieldService) {
         this.typeComponentService = typeComponentService;
+        this.templateFieldService = templateFieldService;
+        this.mapperTemplateField = new MapperTemplateField();
     }
 
     @GetMapping("/")
@@ -54,8 +60,8 @@ public class IndexController {
     @PostMapping("/type_components/constructor/{key}")
     @ResponseBody
     public Map<String, String> addTypeConstructorForComponent(@PathVariable("key") String key,
-                                                              @RequestParam(required = false, name="data") String data) {
-        System.out.println(data);
+                                                              @RequestParam(required = false, name="data") String data) throws JsonProcessingException {
+        templateFieldService.addTemplateField(mapperTemplateField.getTemplateFieldsForString(data, key));
         return Map.of("result", "success");
     }
 }
