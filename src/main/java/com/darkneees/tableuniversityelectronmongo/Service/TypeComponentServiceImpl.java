@@ -5,6 +5,8 @@ import com.darkneees.tableuniversityelectronmongo.Repository.TypeComponentReposi
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Service
 public class TypeComponentServiceImpl implements TypeComponentService {
@@ -33,5 +35,11 @@ public class TypeComponentServiceImpl implements TypeComponentService {
     @Override
     public TypeComponent getTypeComponentByKey(String key) {
         return typeComponentRepository.findById(key).get();
+    }
+
+    public void addCollectionTypeComponent(String key, Map<String, String> data) {
+        TypeComponent typeComponent = typeComponentRepository.findById(key).get();
+        typeComponent.addComponent(data);
+        typeComponentRepository.save(typeComponent);
     }
 }

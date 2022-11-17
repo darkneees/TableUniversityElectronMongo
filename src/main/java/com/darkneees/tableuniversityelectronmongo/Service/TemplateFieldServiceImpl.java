@@ -30,4 +30,9 @@ public class TemplateFieldServiceImpl implements TemplateFieldService {
         return templateFieldRepository.findById(key).orElse(new TemplateField());
     }
 
+    @Override
+    public void deleteTemplateFields(String key) {
+        templateFieldRepository.deleteById(key);
+    }
+
 }

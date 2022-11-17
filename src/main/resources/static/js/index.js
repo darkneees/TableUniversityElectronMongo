@@ -65,42 +65,24 @@ jQuery(document).ready(function ($) {
     var token = $('#_csrf').attr('content');
     var header = $('#_csrf_header').attr('content');
 
-    $(".take-button").click(function () {
+    $("#type-component").change(function (){
 
-        var button = $(this);
-        var amount = $(this).nextAll('.amount-elements').val();
-        var url = $(this).attr('data-url');
-
-        send_amount(button, url, amount * -1)
-    });
-
-    $(".pick-button").click(function () {
-        var button = $(this);
-        var amount = $(this).nextAll('.amount-elements').val();
-        var url = $(this).attr('data-url');
-
-        send_amount(button, url, amount * 1)
-    });
-
-    function send_amount(button, url, number) {
+        let val = $(this);
 
         $.ajax({
-            type: "POST",
-            url: url,
+            url: "/" + val,
+            method: 'get',
             data: {
-                "_csrf": token,
-                "amount": number
+                "_csrf": token
             },
-            success: function (result) {
-                let elem = button.parent().parent().parent();
-                let amount = elem.find("th[name='amount']");
-                amount.text(result.amount);
-            },
-            error: function () {
-                alert("Недостаточно компонентов!");
-            }
+            success: (function (){
+
+            })
         });
-    }
+        console.log(val);
+
+    });
+
 
 
     $("#item-search").on("keyup", function() {

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="header.html :: headerfiles"/>
+    <link media="all" type="text/css" th:href="@{/styles/add-component.css}" rel="stylesheet"/>
+    <script th:src="@{/js/add-component.js}"></script>
+    <title>Электрические компоненты</title>
+</head>
+<body style="background-color: lightblue;">
+
+
+<div style="margin-top: 20px" class="container">
+
+    <span style="display: inline">
+        <h1 style="display: inline">Созданение компонента</h1>
+        <a th:href="@{/}" style="display: inline; float: right; margin-right: 20px" class="btn btn-lg custom-button edit-button">Главная страница</a>
+    </span>
+    <div style="margin-top: 20px" class="dropdown">
+        <label>Выберите тип компонента</label>
+        <select id="type-component" class="form-select" aria-label="Default select example">
+            <option th:each="elem: ${type_components}" th:value="${elem.key}" th:text="${elem.value}"/>
+        </select>
+    </div>
+    <form style="margin-top: 20px" class="well form-horizontal" th:action="@{/add-component}" method="post" id="contact_form">
+        <div id="dynamic-elements"></div>
+    </form>
+    <!-- Button -->
+    <div style="text-align: center" class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div><br>
+            <button id="send_form" class="btn btn-lg btn-warning">Добавить компонент<span class="glyphicon glyphicon-send"></span></button>
+        </div>
+    </div>
+</div>
+
+</body>

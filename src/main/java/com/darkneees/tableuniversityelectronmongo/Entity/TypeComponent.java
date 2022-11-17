@@ -12,7 +12,7 @@ public class TypeComponent {
 
     private @MongoId String key;
     private String value;
-    private List<Map<String, Field>> components = new ArrayList<>();
+    private List<Map<String, String>> components = new ArrayList<>();
 
     public TypeComponent() {
     }
@@ -38,15 +38,15 @@ public class TypeComponent {
         this.value = value;
     }
 
-    public List<Map<String, Field>> getComponents() {
+    public List<Map<String, String>> getComponents() {
         return components;
     }
 
-    public void setComponents(List<Map<String, Field>> components) {
+    public void setComponents(List<Map<String, String>> components) {
         this.components = components;
     }
 
-    public void addComponent(Map<String, Field> component) {
+    public void addComponent(Map<String, String> component) {
         this.components.add(component);
     }
 }

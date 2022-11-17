@@ -11,7 +11,7 @@ import java.util.List;
 public class TemplateField {
 
     private @MongoId String key;
-    private List<HashMap<String, Field>> fields = new ArrayList<>();
+    private HashMap<String, Field> fields = new HashMap<>();
 
     public TemplateField() {
     }
@@ -24,18 +24,16 @@ public class TemplateField {
         this.key = key;
     }
 
-    public List<HashMap<String, Field>> getFields() {
+    public HashMap<String, Field> getFields() {
         return fields;
     }
 
-    public void setField(List<HashMap<String, Field>> fields) {
+    public void setField(HashMap<String, Field> fields) {
         this.fields = fields;
     }
 
     public void addField(String key, Field field) {
-        HashMap<String, Field> fieldHashMap = new HashMap<>();
-        fieldHashMap.put(key, field);
-        fields.add(fieldHashMap);
+        fields.put(key, field);
     }
 
     @Override
