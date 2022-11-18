@@ -51,11 +51,9 @@
         <tbody id="table-components">
         <tr th:each="elem: ${template_field.getFields()}">
             <th><button class="btn-sm custom-button remove-button">Удалить</button></th>
-            <th th:each="map: ${elem.keySet()}" th:text="${map}"></th>
-            <th:block th:each="field: ${elem.values()}">
-                <th th:text="${field.getValue()}"></th>
-                <th th:text="${field.isRequired()}"></th>
-            </th:block>
+            <th th:text="${elem.key}"></th>
+            <th th:text="${elem.value.value}"></th>
+            <th th:text="${elem.value.required}"></th>
         </tr>
         </tbody>
     </table>
@@ -68,6 +66,7 @@
     fields[type_key] = {};
 
     let templateFields = [[${template_field}]];
+    console.log(templateFields);
     templateFields['fields'].forEach(function (elem) {
         let keys = Object.keys(elem);
         fields[type_key][keys] = {

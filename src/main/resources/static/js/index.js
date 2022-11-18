@@ -67,16 +67,17 @@ jQuery(document).ready(function ($) {
 
     $("#type-component").change(function (){
 
-        let val = $(this);
+        let val = $(this).val();
 
+        console.log("/" + val);
         $.ajax({
             url: "/" + val,
-            method: 'get',
+            method: 'post',
             data: {
                 "_csrf": token
             },
-            success: (function (){
-
+            success: (function (data){
+                console.log(data);
             })
         });
         console.log(val);

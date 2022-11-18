@@ -31,11 +31,12 @@ public class IndexController {
         return "index";
     }
 
-//    @GetMapping("/{key}")
-//    @ResponseBody
-//    public String[] getIndexPageWithKey(@PathVariable("key") String key){
-//        return typeComponentService
-//    }
+    @PostMapping("/{key}")
+    @ResponseBody
+    public TypeComponent getIndexPageWithKey(@PathVariable("key") String key){
+        System.out.println(key);
+        return typeComponentService.getTypeComponentByKey(key);
+    }
 
     @GetMapping("/type_components")
     public String getConstructorPage(Model model) {
