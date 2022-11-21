@@ -10,6 +10,7 @@ import java.beans.FeatureDescriptor;
 import java.io.ObjectInput;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -48,8 +49,13 @@ public class TypeComponentServiceImpl implements TypeComponentService {
     }
 
     public void addFieldsTypeComponent(Map<String, Field> map, String key) {
-        TypeComponent typeComponent = typeComponentRepository.findById(key).get();
-        typeComponent.setFields(map);
-        typeComponentRepository.save(typeComponent);
+        Optional<TypeComponent> optionalTypeComponent = typeComponentRepository.findById(key);
+        if(optionalTypeComponent.isPresent()) {
+            TypeComponent typeComponent = optionalTypeComponent.get();
+            map.keySet().stream().forEach((elem) -> {
+                typeComponent.addField(elem, map.get(elem));
+            });
+            typeComponentRepository.save(typeComponent);
+        }
     }
 }
