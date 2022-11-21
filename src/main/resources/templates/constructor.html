@@ -8,15 +8,13 @@
 <body style="background-color: lightblue;">
 
 <div class="main-title">
-    <div style="margin-left: 20px">
     <span>
-        <h1 style="display: inline">Созданение типа компонента</h1>
-        <button id="update_form" style="display: inline; float: right; margin-right: 20px" class="btn-lg custom-button edit-button">Обновить форму</button>
-        <a th:href="@{/}" style="display: inline; float: right; margin-right: 20px" class="btn-lg custom-button edit-button">Главная страница</a>
-
+        <h1 class="d-inline">Созданение типа компонента</h1>
+        <button id="update_form" class="btn-lg custom-button edit-button d-inline construct-button">Обновить форму</button>
+        <a th:href="@{/}" class="btn-lg custom-button edit-button d-inline construct-button">Главная страница</a>
     </span>
-    <span style="display: inline-block" class="main-title my-container">
-        <fieldset style="display: inline">
+    <span class="main-title my-container">
+        <fieldset class="d-inline">
             <legend>Обязателен ли ввод?</legend>
             <div>
               <input type="radio" id="required" name="require" checked value="true">
@@ -27,15 +25,14 @@
               <label for="nonrequired">Необязательно</label>
             </div>
         </fieldset>
-        <form style="display: inline">
+        <form class="d-inline">
             <input required type="text" id="key-field" name="name-field" placeholder="Введите ключ поля">
         </form>
-        <form style="display: inline">
+        <form class="d-inline">
             <input required type="text" id="name-field" name="type-field" placeholder="Введите название поля">
         </form>
         <button id="add-element" class="btn custom-button add-button">Добавить элемент на страницу</button>
         </span>
-    </div>
 </div>
 
 <div class="container">
@@ -65,8 +62,8 @@
     let fields = {};
     fields[type_key] = {};
 
+    console.log([[${template_field}]]);
     let templateFields = [[${template_field}]];
-    console.log(templateFields);
     templateFields['fields'].forEach(function (elem) {
         let keys = Object.keys(elem);
         fields[type_key][keys] = {

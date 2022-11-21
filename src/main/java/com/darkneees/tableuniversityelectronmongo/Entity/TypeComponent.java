@@ -1,9 +1,11 @@
 package com.darkneees.tableuniversityelectronmongo.Entity;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +15,7 @@ public class TypeComponent {
     private @MongoId String key;
     private String value;
     private List<Map<String, String>> components = new ArrayList<>();
+    private Map<String, Field> fields = new HashMap<>();
 
     public TypeComponent() {
     }
@@ -48,5 +51,17 @@ public class TypeComponent {
 
     public void addComponent(Map<String, String> component) {
         this.components.add(component);
+    }
+
+    public Map<String, Field> getFields() {
+        return fields;
+    }
+
+    public void setFields(Map<String, Field> fields) {
+        this.fields = fields;
+    }
+
+    public void addField(String key, Field field) {
+        fields.put(key, field);
     }
 }

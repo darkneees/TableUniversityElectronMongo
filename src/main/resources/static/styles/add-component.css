@@ -1,24 +1,4 @@
-.custom-button {
-    color: white;
-    padding: 8px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.add-button {
-    background-color: #0b5a15;
-}
-
-.add-button:hover {
-    background-color: #118c21;
-}
-
-.edit-button {
-    background-color: #2075f3;
-}
-
-.edit-button:hover {
-    background-color: #1563d5;
+.main-page-button {
+    float: right;
+    margin-right: 20px;
 }

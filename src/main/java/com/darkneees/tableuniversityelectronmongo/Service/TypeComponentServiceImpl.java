@@ -1,9 +1,13 @@
 package com.darkneees.tableuniversityelectronmongo.Service;
 
+import com.darkneees.tableuniversityelectronmongo.Entity.Field;
 import com.darkneees.tableuniversityelectronmongo.Entity.TypeComponent;
 import com.darkneees.tableuniversityelectronmongo.Repository.TypeComponentRepository;
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
+import java.beans.FeatureDescriptor;
+import java.io.ObjectInput;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -40,6 +44,12 @@ public class TypeComponentServiceImpl implements TypeComponentService {
     public void addCollectionTypeComponent(String key, Map<String, String> data) {
         TypeComponent typeComponent = typeComponentRepository.findById(key).get();
         typeComponent.addComponent(data);
+        typeComponentRepository.save(typeComponent);
+    }
+
+    public void addFieldsTypeComponent(Map<String, Field> map, String key) {
+        TypeComponent typeComponent = typeComponentRepository.findById(key).get();
+        typeComponent.setFields(map);
         typeComponentRepository.save(typeComponent);
     }
 }

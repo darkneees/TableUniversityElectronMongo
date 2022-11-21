@@ -1,0 +1,59 @@
+a:active,
+a:hover,
+a {
+    text-decoration: none;
+    color: #666;
+}
+
+body {
+    background-color: lightblue;
+}
+input[type=text] {
+    padding: 8px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+.main-title {
+    display: block;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    margin-left: 20px;
+    margin-right: auto;
+}
+
+.custom-button {
+    color: white;
+    padding: 8px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    vertical-align: baseline;
+}
+.add-button {
+    background-color: #0b5a15;
+}
+
+.add-button:hover {
+    background-color: #118c21;
+}
+
+.remove-button{
+    background-color: #9d1612;
+}
+
+.remove-button:hover {
+    background-color: #e6312c;
+}
+.edit-button {
+    background-color: #2075f3;
+}
+
+.edit-button:hover {
+    background-color: #1563d5;
+}

@@ -1,100 +1,9 @@
-a.text:active, /* активная/посещенная ссылка */
-a.text:hover,  /* при наведении */
-a.text {
-    text-decoration: none;
-    color: #666;
-}
-
-.my-container {
-    border-bottom: 1px solid gray;
-    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(100,200,255,1) 0%, rgba(166,180,253,1) 90.1% );
-    margin-bottom: 20px;
-}
-
-.main-title {
-    width: 100%;
-    display: block;
-    margin-bottom: 15px;
-    padding-top: 15px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.electron-items li a {
-    color: #FFFFFF;
-}
-
-thead tr th {
-    font-size: 16px;
-}
-
-tbody tr th {
-    font-weight: 500;
+*, *::before, *::after {
+    box-sizing: revert;
 }
 
 input[type=text] {
     width: 45%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-form {
-    display: inline;
-}
-
-.custom-button {
-    color: white;
-    padding: 8px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.add-button {
-    background-color: #0b5a15;
-}
-
-.add-button:hover {
-    background-color: #118c21;
-}
-
-.remove-button{
-    background-color: #9d1612;
-}
-
-.remove-button:hover {
-    background-color: #e6312c;
-}
-
-.components-button{
-    background-color: #17656b;
-}
-
-.components-button:hover {
-    background-color: #2ab8c4;
-}
-
-.take-button {
-    padding: 4px 14px;
-    background-color: #9d1612;
-}
-
-.take-button:hover {
-    background-color: #e6312c;
-}
-
-.pick-button {
-    padding: 4px 12px;
-    background-color: #0b5a15;
-}
-
-.pick-button:hover {
-    background-color: #118c21;
 }
 
 /* Dropdown Button */
@@ -143,80 +52,29 @@ form {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
-
-
-
-.modalDialog {
-    position: fixed;
-    font-family: Arial, Helvetica, sans-serif;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0,0,0,0.8);
-    z-index: 99999;
-    opacity:0;
-    -webkit-transition: opacity 400ms ease-in;
-    -moz-transition: opacity 400ms ease-in;
-    transition: opacity 400ms ease-in;
-    pointer-events: none;
+thead {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
 }
-
-
-
-.modalDialog:target {
-    opacity:1;
-    pointer-events: auto;
+th {
+    min-width: 150px;
+    font-weight: normal;
 }
-
-.modalDialog > div {
-    width: 400px;
-    position: relative;
-    margin: 10% auto;
-    padding: 5px 20px 13px 20px;
-    border-radius: 10px;
-    background: #fff;
-    background: -moz-linear-gradient(#fff, #999);
-    background: -webkit-linear-gradient(#fff, #999);
-    background: -o-linear-gradient(#fff, #999);
-}
-
-
-
-
-.close {
-    background: #606061;
-    color: #FFFFFF;
-    line-height: 25px;
-    position: absolute;
-    right: -12px;
-    text-align: center;
-    top: -10px;
-    width: 24px;
-    text-decoration: none;
-    font-weight: bold;
-    -webkit-border-radius: 12px;
-    -moz-border-radius: 12px;
-    border-radius: 12px;
-    -moz-box-shadow: 1px 1px 3px #000;
-    -webkit-box-shadow: 1px 1px 3px #000;
-    box-shadow: 1px 1px 3px #000;
-}
-
-.close:hover { background: #00d9ff; }
-
 
 .big-table {
     overflow: auto;
     position: relative;
 }
 .big-table table {
+    background-color: #7fd6f5;
     display: inline-block;
     vertical-align: top;
     max-width: 100%;
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
+    box-sizing: unset;
 }
 .scroll-right:after {
     content: '';
@@ -246,8 +104,4 @@ form {
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: 15px 100%;
-}
-
-.custom-text {
-    width: 10%;
 }

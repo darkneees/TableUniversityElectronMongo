@@ -1,9 +1,7 @@
 package com.darkneees.tableuniversityelectronmongo.Controller;
 
-import com.darkneees.tableuniversityelectronmongo.Entity.TemplateField;
 import com.darkneees.tableuniversityelectronmongo.Entity.TypeComponent;
 import com.darkneees.tableuniversityelectronmongo.Service.MapperEntityFields;
-import com.darkneees.tableuniversityelectronmongo.Service.TemplateFieldServiceImpl;
 import com.darkneees.tableuniversityelectronmongo.Service.TypeComponentServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.stereotype.Controller;
@@ -17,11 +15,9 @@ public class IndexController {
 
     private final TypeComponentServiceImpl typeComponentService;
     private final MapperEntityFields mapperEntityFields;
-    private final TemplateFieldServiceImpl templateFieldService;
 
-    public IndexController(TypeComponentServiceImpl typeComponentService, TemplateFieldServiceImpl templateFieldService) {
+    public IndexController(TypeComponentServiceImpl typeComponentService) {
         this.typeComponentService = typeComponentService;
-        this.templateFieldService = templateFieldService;
         this.mapperEntityFields = new MapperEntityFields();
     }
 
@@ -33,9 +29,9 @@ public class IndexController {
 
     @PostMapping("/{key}")
     @ResponseBody
-    public TypeComponent getIndexPageWithKey(@PathVariable("key") String key){
-        System.out.println(key);
-        return typeComponentService.getTypeComponentByKey(key);
+    public Map<String, Object> getIndexPageWithKey(@PathVariable("key") String key){
+        TypeComponent typeComponent = typeComponentService.getTypeComponentByKey(key);
+        return Map.of("type_component", typeComponent);
     }
 
     @GetMapping("/type_components")
@@ -57,23 +53,21 @@ public class IndexController {
     @ResponseBody
     public Map<String, String> deleteTypeComponent(@PathVariable("key") String key) {
         typeComponentService.deleteTypeComponent(key);
-        templateFieldService.deleteTemplateFields(key);
         return Map.of("result", "success");
     }
 
     @GetMapping("/type_components/constructor/{key}")
     public String getPageWithTypeConstructor (Model model, @PathVariable("key") String key) {
-        TemplateField templateField = templateFieldService.getTemplateFieldByKey(key);
-        System.out.println(templateField);
-        model.addAttribute("template_field", templateFieldService.getTemplateFieldByKey(key));
+        model.addAttribute("template_field", typeComponentService.getTypeComponentByKey(key));
         return "constructor";
     }
 
     @PostMapping("/type_components/constructor/{key}")
     @ResponseBody
     public Map<String, String> addTypeConstructorForComponent(@PathVariable("key") String key,
-                                                              @RequestParam(required = false, name="data") String data) throws JsonProcessingException {
-        templateFieldService.addTemplateField(mapperEntityFields.getTemplateFieldsForString(data, key));
+                                                              @RequestParam(required = false, name="data") String data)
+            throws JsonProcessingException {
+        typeComponentService.addFieldsTypeComponent(mapperEntityFields.createTypeComponentFields(data, key), key);
         return Map.of("result", "success");
     }
 
@@ -94,7 +88,7 @@ public class IndexController {
 
     @PostMapping("/add-component/{key}")
     @ResponseBody
-    public TemplateField getComponentFields(@PathVariable("key") String key){
-        return templateFieldService.getTemplateFieldByKey(key);
+    public TypeComponent getComponentFields(@PathVariable("key") String key){
+        return typeComponentService.getTypeComponentByKey(key);
     }
 }

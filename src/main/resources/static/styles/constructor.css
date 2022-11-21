@@ -1,55 +1,8 @@
-.my-container {
-    margin-left: 20px;
-}
-
-.main-title {
-    width: 100%;
-    display: block;
-    margin-bottom: 15px;
-    padding-top: 15px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.custom-button {
-    color: white;
-    padding: 8px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.add-button {
-    background-color: #0b5a15;
-}
-
-.add-button:hover {
-    background-color: #118c21;
-}
-
-.edit-button {
-    background-color: #2075f3;
-}
-
-.edit-button:hover {
-    background-color: #1563d5;
+.construct-button {
+    float: right;
+    margin-right: 20px;
 }
 
 input[type=text] {
-    width: 30%;
-    padding: 12px 20px;
-    margin: 8px 4px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.remove-button{
-    background-color: #9d1612;
-}
-
-.remove-button:hover {
-    background-color: #e6312c;
+    width: 25%;
 }
