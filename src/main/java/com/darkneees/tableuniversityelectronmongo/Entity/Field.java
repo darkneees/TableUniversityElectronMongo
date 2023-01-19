@@ -1,9 +1,12 @@
 package com.darkneees.tableuniversityelectronmongo.Entity;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class Field {
 
     private boolean required;
-    private Object value;
+    private String typeData;
 
     public Field() {
     }
@@ -16,24 +19,25 @@ public class Field {
         this.required = required;
     }
 
-    public Object getValue() {
-        return value;
-    }
 
-    public void setValue(Object value) {
-        this.value = value;
-    }
-
-    public Field(boolean required, Object value) {
+    public Field(boolean required, String typeData) {
         this.required = required;
-        this.value = value;
+        this.typeData = typeData;
+    }
+
+    public String getTypeData() {
+        return typeData;
+    }
+
+    public void setTypeData(String typeData) {
+        this.typeData = typeData;
     }
 
     @Override
     public String toString() {
         return "Field{" +
                 "required=" + required +
-                ", value=" + value +
+                ", typeData='" + typeData + '\'' +
                 '}';
     }
 }

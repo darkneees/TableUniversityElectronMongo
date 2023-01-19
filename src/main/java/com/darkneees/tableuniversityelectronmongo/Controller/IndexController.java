@@ -7,6 +7,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Map;
 
@@ -42,11 +45,10 @@ public class IndexController {
 
     @PostMapping("/type_components")
     @ResponseBody
-    public Map<String, Object> addTypeComponent(@RequestParam("key") String key, @RequestParam("value") String value) {
-        if(key.equals("") || value.equals("")) throw new RuntimeException("Empty fields");
-        TypeComponent typeComponent = new TypeComponent(key, value);
-        typeComponentService.addTypeComponent(typeComponent);
-        return Map.of("result", "success", "key", key, "value", value);
+    public Map<String, Object> addTypeComponent(@RequestParam("value") String value) {
+        if(value.equals("")) throw new RuntimeException("Empty fields");
+        TypeComponent typeComponent = typeComponentService.addTypeComponent(new TypeComponent(value));
+        return Map.of("result", "success", "key", typeComponent.getKey().toString(), "value", typeComponent.getValue());
     }
 
     @PostMapping("/type_components/delete/{key}")
@@ -65,9 +67,9 @@ public class IndexController {
     @PostMapping("/type_components/constructor/{key}")
     @ResponseBody
     public Map<String, String> addTypeConstructorForComponent(@PathVariable("key") String key,
-                                                              @RequestParam(required = false, name="data") String data)
-            throws JsonProcessingException {
-        typeComponentService.addFieldsTypeComponent(mapperEntityFields.createTypeComponentFields(data, key), key);
+                                                 @RequestParam(required = false, name="data") String data
+                                                ) throws JsonProcessingException {
+        typeComponentService.setFieldsTypeComponent(mapperEntityFields.createTypeComponentFields(data, key), key);
         return Map.of("result", "success");
     }
 

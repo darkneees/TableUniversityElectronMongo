@@ -13,8 +13,17 @@
         <button id="update_form" class="btn-lg custom-button edit-button d-inline construct-button">Обновить форму</button>
         <a th:href="@{/}" class="btn-lg custom-button edit-button d-inline construct-button">Главная страница</a>
     </span>
-    <span class="main-title my-container">
-        <fieldset class="d-inline">
+    <span class="main-title-constructor my-container">
+        <form id="data" class="d-inline">
+            <input required type="text" id="name-field" name="type-field" placeholder="Введите название поля">
+            <select class="select-css" form="data" id="type_data">
+                <option selected>Выбери тип данных</option>
+                <option>Число</option>
+                <option>Текст</option>
+                <option>Дата</option>
+                <option>Файл</option>
+            </select>
+            <fieldset class="d-inline">
             <legend>Обязателен ли ввод?</legend>
             <div>
               <input type="radio" id="required" name="require" checked value="true">
@@ -25,11 +34,6 @@
               <label for="nonrequired">Необязательно</label>
             </div>
         </fieldset>
-        <form class="d-inline">
-            <input required type="text" id="key-field" name="name-field" placeholder="Введите ключ поля">
-        </form>
-        <form class="d-inline">
-            <input required type="text" id="name-field" name="type-field" placeholder="Введите название поля">
         </form>
         <button id="add-element" class="btn custom-button add-button">Добавить элемент на страницу</button>
         </span>
@@ -40,8 +44,8 @@
         <thead>
         <tr>
             <th scope="col">Удаление</th>
-            <th style="min-width: 150px;" scope="col">Ключ</th>
             <th style="min-width: 150px;" scope="col">Название</th>
+            <th style="min-width: 150px;" scope="col">Тип данных</th>
             <th scope="col">Обязательно</th>
         </tr>
         </thead>
@@ -49,7 +53,7 @@
         <tr th:each="elem: ${template_field.getFields()}">
             <th><button class="btn-sm custom-button remove-button">Удалить</button></th>
             <th th:text="${elem.key}"></th>
-            <th th:text="${elem.value.value}"></th>
+            <th th:text="${elem.value.typeData}"></th>
             <th th:text="${elem.value.required}"></th>
         </tr>
         </tbody>
@@ -64,13 +68,13 @@
 
     console.log([[${template_field}]]);
     let templateFields = [[${template_field}]];
-    templateFields['fields'].forEach(function (elem) {
-        let keys = Object.keys(elem);
-        fields[type_key][keys] = {
-            "value": elem[keys]['value'],
-            "required": elem[keys]['required']
+    for(let elem in templateFields["fields"]) {
+        fields[type_key][elem] = {
+            "typeData": templateFields['fields'][elem]['typeData'],
+            "required": templateFields['fields'][elem]['required']
         };
-    });
+        console.log(elem['typeData']);
+    }
 </script>
 <script th:src="@{/js/constructor.js}"></script>
 

@@ -21,26 +21,23 @@ $(document).ready(function ($) {
                "_csrf": token
            },
             success: (function(data){
-                console.log(data);
                 let fields = {};
                 fields[key] = {};
 
                 let keys = Object.keys(data['fields']);
 
                 keys.forEach(function (elem) {
-                    console.log(elem);
                     data_keys.push(elem);
                     let htmlText = `
                 <div style="margin-top: 20px" class="form-group">
-                    <label>${data['fields'][elem]['value']}</label>
+                    <label>${elem}</label>
                     <div class="inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input required="${data['fields'][elem]['required']}" id="${elem}" name="${keys}" placeholder="Введите ${data['fields'][elem]['value']}..." class="form-control" type="text">
+                            <input required="${data['fields'][elem]['required']}" id="${elem}" name="${keys}" placeholder="Введите ${elem}..." class="form-control" type="text">
                         </div>
                     </div>
-                </div>
-`
+                </div>`
                     form.append(htmlText);
                 });
             })
@@ -54,7 +51,6 @@ $(document).ready(function ($) {
 
         data_keys.forEach(element => {
             data[element] = $("#" + element).val();
-
         });
 
         $.ajax({
@@ -64,9 +60,10 @@ $(document).ready(function ($) {
                "data": JSON.stringify(data),
                "_csrf": token
            },
+            success: (function(data){
+                location.reload();
+            }),
         });
     });
-
-
     $("#type-component").trigger('change');
 });

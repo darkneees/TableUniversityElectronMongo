@@ -22,7 +22,6 @@ jQuery(document).ready(function ($) {
     });
 
     $("#add_typeComponent").click(function (){
-        let _key = $("#key").val();
         let _value = $("#value").val();
 
         $.ajax({
@@ -30,7 +29,6 @@ jQuery(document).ready(function ($) {
             method: 'post',
             data: {
                 "_csrf": token,
-                key: _key,
                 value: _value
             },
             success: function (data) {

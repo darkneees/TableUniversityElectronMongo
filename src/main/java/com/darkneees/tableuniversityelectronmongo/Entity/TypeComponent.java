@@ -12,7 +12,7 @@ import java.util.Map;
 @Document
 public class TypeComponent {
 
-    private @MongoId String key;
+    private @MongoId ObjectId key;
     private String value;
     private List<Map<String, String>> components = new ArrayList<>();
     private Map<String, Field> fields = new HashMap<>();
@@ -20,17 +20,12 @@ public class TypeComponent {
     public TypeComponent() {
     }
 
-    public TypeComponent(String key, String value) {
-        this.key = key;
+    public TypeComponent(String value) {
         this.value = value;
     }
 
-    public String getKey() {
+    public ObjectId getKey() {
         return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
     }
 
     public String getValue() {
@@ -63,5 +58,15 @@ public class TypeComponent {
 
     public void addField(String key, Field field) {
         fields.put(key, field);
+    }
+
+    @Override
+    public String toString() {
+        return "TypeComponent{" +
+                "key=" + key +
+                ", value='" + value + '\'' +
+                ", components=" + components +
+                ", fields=" + fields +
+                '}';
     }
 }

@@ -15,9 +15,10 @@ jQuery(document).ready(function ($) {
             },
             success: (function (data){
                 table.empty();
+                console.log(data);
                 let thead = `<thead><tr>`;
                 let keys = Object.keys(data['type_component']['fields']);
-                keys.forEach(element => thead += `<th scope="col">${data['type_component']['fields'][element]['value']}</th>`)
+                keys.forEach(element => thead += `<th scope="col">${element}</th>`)
                 thead += `<th></th><th></th></tr></thead>`;
 
                 let tbody = `<tbody>`
